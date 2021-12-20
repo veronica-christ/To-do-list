@@ -13,14 +13,12 @@ export class ThingstodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.todo=[{
-      content:'first todo',
+      content:"",
   completed:false
+  
 },
-{
-content:'Second todo',
-completed:false
 
-}
+
 ]
   }
   // } this code is so that when you click on the 
@@ -32,17 +30,23 @@ if(i==id) v.completed =!v.completed;
 return v;
 })
   }
+  edit(id:number){
+
+
+  }
   delete(id:number){
 this.todo=this.todo.filter((v,i)=>i !==id)
 
   }
 addTodo(){
-
+ if(this.inputTodo=="")//this is to ensure that null values are not aaded as tasks//
+  {return null;
+}else{
   this.todo.push({
     content:this.inputTodo,
   completed:false
   });
   this.inputTodo="";
 }
-
+}
 }
